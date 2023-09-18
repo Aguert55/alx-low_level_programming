@@ -1,4 +1,6 @@
-#include "main.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 /**
  * main - program that generates random valid
@@ -11,7 +13,7 @@ int main(void)
 	int pass[100];
 	int i, sum, n;
 
-	sum = 0;
+	sum = 0;	
 
 	srand(time(NULL));
 
