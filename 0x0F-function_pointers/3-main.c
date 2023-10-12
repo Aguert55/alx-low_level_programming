@@ -1,37 +1,40 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "3-calc.h"
+
 /**
- * main - Entry point for the calculator program.
- * @argc: The number of command-line arguments.
- * @argv: An array of strings representing the command-line arguments.
+ * main - check the code for Holberton School students.
+ * @argc: argument count.
+ * @argv: argument vector.
  *
- * Return: 0 on success, other values on error.
+ * Return: Always 0.
  */
 int main(int argc, char *argv[])
 {
-	int num1, num2;
-	int result;
-	int (*calc_func)(int, int);
+	int a, b;
+	int (*operation)(int, int);
 
 	if (argc != 4)
 	{
 		printf("Error\n");
-		return (98);
+		exit(98);
 	}
 
-	num1 = atoi(argv[1]);
-	num2 = atoi(argv[3]);
-	calc_func = get_op_func(argv[2]);
-
-	if (calc_func == NULL)
+	if (argv[2][1])
 	{
 		printf("Error\n");
-		return (99);
+		exit(99);
 	}
 
-	result = calc_func(num1, num2);
-	printf("%d\n", result);
+	operation = get_op_func(argv[2]);
 
+	if (operation == NULL)
+	{
+		printf("Error\n");
+		exit(99);
+	}
+
+	a = atoi(argv[1]);
+	b = atoi(argv[3]);
+
+	printf("%d\n", operation(a, b));
 	return (0);
 }
